@@ -18,8 +18,8 @@ class CreateProspectTable extends Migration
             $table->string('name'); //searchable
             $table->string('email')->unique(); //searchable
             $table->string('phone'); //searchable
-            $table->string('location'); //filter
-            $table->string('source');
+            $table->string('location')->nullable(); //filter
+            $table->string('source')->nullable();
             $table->timestamp('date');
             $table->timestamps();
         });
