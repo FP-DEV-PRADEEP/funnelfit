@@ -13,7 +13,8 @@
         "laravel/spark-paddle": "^1.0",
         "laravel/tinker": "^2.5",
         "ringcentral/ringcentral-php": "^2.2",
-        "twilio/sdk": "^6.24"
+        "twilio/sdk": "^6.24",
+        "laravel/ui": "^3.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

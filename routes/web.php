@@ -18,5 +18,16 @@ Route::get('/', function () {
 
 });
 
-use App\Http\Controllers\TwilioController;
-Route::get('sendsms',[TwilioController::class, 'sendsms']);
+
+use App\Http\Controllers\RingcentralController;
+Route::get('callout',[RingcentralController::class, 'callout']); 
+
+
+Route::middleware(['auth'])->group(function() {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/prospects', [App\Http\Controllers\ProspectsController::class, 'index'])->name('prospects');
+    Route::get('/prospects/get-data', [App\Http\Controllers\ProspectsController::class, 'getData'])->name('prospects.get-data');
+    Route::get('/prospects/get-locations', [App\Http\Controllers\ProspectsController::class, 'getLocations'])->name('prospects.get-locations');
+});
+
+Auth::routes();
