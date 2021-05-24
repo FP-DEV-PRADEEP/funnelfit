@@ -16,7 +16,7 @@ class CreateSmsLogTable extends Migration
         Schema::create('sms_log', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('prospect_id')->unique();
+            $table->integer('prospect_id');
 
         });
     }
