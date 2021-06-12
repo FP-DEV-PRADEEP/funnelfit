@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 
 use App\Http\Controllers\RingcentralController;
-Route::get('callout',[RingcentralController::class, 'callout']); 
+Route::get('callout',[RingcentralController::class, 'callout']);
 
 
 Route::middleware(['auth'])->group(function() {

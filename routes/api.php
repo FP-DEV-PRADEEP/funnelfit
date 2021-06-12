@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ApiZapierProspectController;
+use App\Http\Controllers\RingcentralController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/import-prospect', [ApiZapierProspectController::class, 'store']);
+
+
+Route::post('handleCallback',[RingcentralController::class, 'handleCallback']);
