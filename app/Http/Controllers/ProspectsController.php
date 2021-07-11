@@ -13,11 +13,15 @@ class ProspectsController extends Controller
     }
 
     public function getData() {
-        return Prospect::filter(Request::only('search', 'date', 'location'))
+        return Prospect::filter(Request::only('search', 'date', 'gym'))
             ->paginate(10);
     }
 
     public function getLocations() {
         return Prospect::groupBy('location')->pluck('location');
+    }
+
+    public function getGyms() {
+        return Prospect::groupBy('prospect_gym')->pluck('prospect_gym');
     }
 }

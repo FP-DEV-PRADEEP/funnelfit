@@ -1946,6 +1946,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -1960,11 +1964,11 @@ __webpack_require__.r(__webpack_exports__);
       data: {
         data: []
       },
-      locations: [],
+      gyms: [],
       form: {
         search: '',
         date: '',
-        location: ''
+        gym: ''
       }
     };
   },
@@ -1980,12 +1984,12 @@ __webpack_require__.r(__webpack_exports__);
         _this.data = response.data;
       });
     },
-    getLocations: function getLocations() {
+    getGyms: function getGyms() {
       var _this2 = this;
 
-      axios.get("prospects/get-locations").then(function (response) {
+      axios.get("prospects/get-gyms").then(function (response) {
         console.log(response);
-        _this2.locations = response.data;
+        _this2.gyms = response.data;
       });
     },
     resetFilter: function resetFilter() {
@@ -2004,7 +2008,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getProspects();
-    this.getLocations();
+    this.getGyms();
   }
 });
 
@@ -43469,7 +43473,7 @@ var render = function() {
                   staticClass: "form-control",
                   attrs: {
                     type: "text",
-                    placeholder: "Search name, email, phone"
+                    placeholder: "Search firstname, lastname, email, phone"
                   },
                   domProps: { value: _vm.form.search },
                   on: {
@@ -43512,12 +43516,12 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.form.location,
-                        expression: "form.location"
+                        value: _vm.form.gym,
+                        expression: "form.gym"
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { name: "location", id: "filter-location" },
+                    attrs: { name: "gym", id: "filter-gym" },
                     on: {
                       change: function($event) {
                         var $$selectedVal = Array.prototype.filter
@@ -43530,7 +43534,7 @@ var render = function() {
                           })
                         _vm.$set(
                           _vm.form,
-                          "location",
+                          "gym",
                           $event.target.multiple
                             ? $$selectedVal
                             : $$selectedVal[0]
@@ -43540,12 +43544,12 @@ var render = function() {
                   },
                   [
                     _c("option", { attrs: { value: "" } }, [
-                      _vm._v("Select Location")
+                      _vm._v("Select Gym")
                     ]),
                     _vm._v(" "),
-                    _vm._l(_vm.locations, function(location) {
-                      return _c("option", { domProps: { value: location } }, [
-                        _vm._v(_vm._s(location))
+                    _vm._l(_vm.gyms, function(gym) {
+                      return _c("option", { domProps: { value: gym } }, [
+                        _vm._v(_vm._s(gym))
                       ])
                     })
                   ],
@@ -43576,17 +43580,21 @@ var render = function() {
                       return _c("tr", { key: item.id }, [
                         _c("td", [_vm._v(_vm._s(item.date))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(item.name))]),
+                        _c("td", [_vm._v(_vm._s(item.prospect_first_name))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(item.email))]),
+                        _c("td", [_vm._v(_vm._s(item.prospect_last_name))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(item.phone))]),
+                        _c("td", [_vm._v(_vm._s(item.prospect_email))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(item.location))]),
+                        _c("td", [_vm._v(_vm._s(item.prospect_phone))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(item.source))]),
+                        _c("td", [_vm._v(_vm._s(item.prospect_city))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(item.date))])
+                        _c("td", [_vm._v(_vm._s(item.prospect_state))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(item.prospect_source))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(item.prospect_gym))])
                       ])
                     }),
                     0
@@ -43616,17 +43624,21 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Date")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Firstname")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Lastname")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Email")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Phone")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Location")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("City")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("State")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Source")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Gym Location")])
       ])
     ])
   },

@@ -13,25 +13,35 @@ class Prospect extends Model
     protected $table = 'prospect';
 
     protected $fillable = [
-        'name',
-        'email',
-        'phone',
-        'location',
-        'source',
-        'date'
+        'date',
+        "prospect_owner",
+        "prospect_id",
+        "modified_by",
+        "prospect_phone",
+        "prospect_email",
+        "prospect_mobile",
+        "prospect_gym",
+        "prospect_city",
+        "prospect_state",
+        "created_by_name",
+        "modified_by_name",
+        "prospect_first_name",
+        "prospect_last_name",
+        "prospect_source",
     ];
 
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? null, function ($query, $search) {
-            $query->where('name', 'like', '%'.$search.'%');
-            $query->orWhere('email', 'like', '%'.$search.'%');
-            $query->orWhere('phone', 'like', '%'.$search.'%');
+            $query->where('prospect_first_name', 'like', '%'.$search.'%');
+            $query->orWhere('prospect_last_name', 'like', '%'.$search.'%');
+            $query->orWhere('prospect_email', 'like', '%'.$search.'%');
+            $query->orWhere('prospect_phone', 'like', '%'.$search.'%');
         })->when($filters['date'] ?? null, function ($query, $date) {
             $carbonDate = new Carbon($date);
             $query->whereDate('date', $carbonDate->format('Y-m-d') );
-        })->when($filters['location'] ?? null, function ($query, $location) {
-            $query->where('location', $location);
+        })->when($filters['gym'] ?? null, function ($query, $gym) {
+            $query->where('prospect_gym', $gym);
         });
     }
 }

@@ -22,11 +22,20 @@ class ProspectFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->safeEmail(),
-            'phone' => $this->faker->phoneNumber(),
-            'location' => $this->faker->word(),
-            'source' => $this->faker->word(),
+            'prospect_owner' => $this->faker->word(),
+            'prospect_id' => $this->faker->word(),
+            'modified_by' => $this->faker->word(),
+            'prospect_phone' => $this->faker->phoneNumber(),
+            'prospect_email' => $this->faker->word(),
+            'prospect_mobile' => $this->faker->phoneNumber(),
+            'prospect_gym' => $this->faker->word(),
+            'prospect_city' => $this->faker->city,
+            'prospect_state' => $this->faker->state,
+            'created_by_name' => $this->faker->name(),
+            'modified_by_name' => $this->faker->name(),
+            'prospect_first_name' => $this->faker->firstName(),
+            'prospect_last_name' => $this->faker->lastName(),
+            'prospect_source' => $this->faker->word(),
             'date' => $this->faker->dateTimeBetween('-1 years', '+2 years'),
         ];
     }

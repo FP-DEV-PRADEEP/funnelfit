@@ -20,11 +20,20 @@ class ApiZapierProspectControllerTest extends TestCase
         $this->withoutExceptionHandling();
 
         $data = [
-            'name' => 'Dummy Name',
-            'email' => 'dummy@email.com',
-            'phone' => '+12145418469',
-            'location' => 'Dummy Location',
-            'date' => '2021-05-23T01:13:32z',
+            "owner" => "4893827000000316001",
+            "prospect_id" => "4893827000000598001",
+            "modified_by" => "4893827000000316001",
+            "prospect_phone" => "+12812043170",
+            "prospect_email" => "atilano_c3@hotmail.com",
+            "prospect_mobile" => "",
+            "prospect_gym" => "Victory Park",
+            "prospect_city" => "",
+            "prospect_state" => "",
+            "created_by_name" => "Richard",
+            "modified_by_name" => "Richard",
+            "prospect_first_name" => "Atilano",
+            "prospect_last_name" => "Martinez",
+            "prospect_source" => "Facebook",
         ];
 
         $response = $this->post('/api/import-prospect', $data);
@@ -32,6 +41,6 @@ class ApiZapierProspectControllerTest extends TestCase
         $prospect = Prospect::find((int)$response->getContent());
 
         $response->assertStatus(200);
-        $this->assertSame($prospect->date, '2021-05-23 01:13:32');
+        $this->assertSame($prospect->prospect_source, "Facebook");
     }
 }

@@ -6,15 +6,15 @@
                 <div class="card-body">
                   <div class="row mb-4">
                     <div class="col-sm-3">
-                      <input type="text" v-model="form.search" class="form-control" placeholder="Search name, email, phone">
+                      <input type="text" v-model="form.search" class="form-control" placeholder="Search firstname, lastname, email, phone">
                     </div>
                     <div class="col-sm-3">
                       <Datepicker v-model="form.date" input-class="form-control" placeholder="Select date"></Datepicker>
                     </div>
                     <div class="col-sm-3">
-                      <select name="location" id="filter-location" class="form-control" v-model="form.location">
-                        <option value="">Select Location</option>
-                        <option :value="location" v-for="location in locations">{{ location }}</option>
+                      <select name="gym" id="filter-gym" class="form-control" v-model="form.gym">
+                        <option value="">Select Gym</option>
+                        <option :value="gym" v-for="gym in gyms">{{ gym }}</option>
                       </select>
                     </div>
                     <div class="col-sm-3">
@@ -25,23 +25,27 @@
                     <thead>
                       <tr>
                         <th scope="col">Date</th>
-                        <th scope="col">Name</th>
+                        <th scope="col">Firstname</th>
+                        <th scope="col">Lastname</th>
                         <th scope="col">Email</th>
                         <th scope="col">Phone</th>
-                        <th scope="col">Location</th>
+                        <th scope="col">City</th>
+                        <th scope="col">State</th>
                         <th scope="col">Source</th>
-                        <th scope="col">Date</th>
+                        <th scope="col">Gym Location</th>
                       </tr>
                     </thead>
                     <tbody v-if="data.data.length > 0">
                       <tr v-for="item in data.data" :key="item.id">
                         <td>{{ item.date }}</td>
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.email }}</td>
-                        <td>{{ item.phone }}</td>
-                        <td>{{ item.location }}</td>
-                        <td>{{ item.source }}</td>
-                        <td>{{ item.date }}</td>
+                        <td>{{ item.prospect_first_name }}</td>
+                        <td>{{ item.prospect_last_name }}</td>
+                        <td>{{ item.prospect_email }}</td>
+                        <td>{{ item.prospect_phone }}</td>
+                        <td>{{ item.prospect_city }}</td>
+                        <td>{{ item.prospect_state }}</td>
+                        <td>{{ item.prospect_source }}</td>
+                        <td>{{ item.prospect_gym }}</td>
                       </tr>
                     </tbody>
                     <tbody v-if="data.data.length <= 0">
@@ -73,11 +77,11 @@ export default {
         data: {
           data: []
         },
-        locations: [],
+        gyms: [],
         form: {
           search: '',
           date: '',
-          location: '',
+          gym: '',
         }
       }
     },
@@ -89,11 +93,11 @@ export default {
             this.data = response.data
           })
       },
-      getLocations() {
-        axios.get(`prospects/get-locations`)
+      getGyms() {
+        axios.get(`prospects/get-gyms`)
           .then(response => {
             console.log(response)
-            this.locations = response.data
+            this.gyms = response.data
           })
       },
       resetFilter() {
@@ -110,7 +114,7 @@ export default {
     },
     mounted() {
       this.getProspects();
-      this.getLocations();
+      this.getGyms();
     }
 }
 </script>
