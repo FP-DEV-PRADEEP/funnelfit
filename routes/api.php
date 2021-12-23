@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ApiZapierProspectController;
+use App\Http\Controllers\ApiZapierCalendlyController;
 use App\Http\Controllers\RingcentralController;
 use App\Http\Controllers\ZohoCallLogController;
 use Illuminate\Http\Request;
@@ -25,3 +26,4 @@ Route::post('/import-prospect', [ApiZapierProspectController::class, 'store']);
 Route::post('/handle-call-log', [ZohoCallLogController::class, 'store']);
 
 Route::post('handleCallback',[RingcentralController::class, 'handleCallback']);
+Route::post('/import-calendly', [ApiZapierCalendlyController::class, 'store']);
