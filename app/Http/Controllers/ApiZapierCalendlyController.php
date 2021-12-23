@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Calendly;
 use App\Models\Prospect;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ApiZapierCalendlyController extends Controller
@@ -25,6 +26,7 @@ class ApiZapierCalendlyController extends Controller
 
         // create prospect
         $prospect = Prospect::create([
+            'date' => Carbon::now(),
             'prospect_email' => $request->input('email'),
             'prospect_mobile' => $request->input('mobile'),
             'prospect_gym' => $request->input('gym'),
