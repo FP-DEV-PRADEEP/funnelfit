@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LeadSearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/twilio-test', [App\Http\Controllers\TwilioTestController::class, 'index'])->name('twilio-test');
     Route::post('/twilio-test', [App\Http\Controllers\TwilioTestController::class, 'storePhoneNumber']);
     Route::post('/twilio-test/custom', [App\Http\Controllers\TwilioTestController::class, 'sendCustomMessage']);
+    Route::get('lead-search', [LeadSearchController::class, 'index'])->name('lead-search');
 });
 
 Auth::routes();

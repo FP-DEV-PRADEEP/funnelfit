@@ -21,6 +21,11 @@ class GymStaff extends Model
         return $this->belongsTo(GymLocation::class);
     }
 
+    public function calendlies()
+    {
+        return $this->hasMany(Calendly::class, 'event_uuid');
+    }
+
     protected $appends = ['resource_url'];
 
     public function getResourceUrlAttribute()
