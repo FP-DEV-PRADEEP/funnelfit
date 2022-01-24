@@ -7722,6 +7722,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -61400,16 +61406,31 @@ var render = function() {
               _c("ais-configure", { attrs: { hitsPerPage: 18 } }),
               _vm._v(" "),
               _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-sm-6" }, [
+                _c("div", { staticClass: "col-sm-3" }, [
                   _c(
                     "div",
                     { staticClass: "form-group" },
                     [
-                      _c("label", { attrs: { for: "" } }, [_vm._v(" ")]),
+                      _c("label", { attrs: { for: "" } }, [_vm._v("Employee")]),
                       _vm._v(" "),
                       _c("ais-search-box", {
                         staticClass: "searchbox",
                         attrs: { placeholder: "Search here…" }
+                      })
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c(
+                    "div",
+                    { staticClass: "form-group" },
+                    [
+                      _c("label", { attrs: { for: "" } }, [_vm._v("Gym")]),
+                      _vm._v(" "),
+                      _c("ais-menu-select", {
+                        attrs: { attribute: "gym_name" }
                       })
                     ],
                     1

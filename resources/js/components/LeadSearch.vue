@@ -9,10 +9,16 @@
                     :hits-per-page.camel="18"
                 />
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                         <div class="form-group">
-                            <label for="">&nbsp;</label>
+                            <label for="">Employee</label>
                             <ais-search-box placeholder="Search here…" class="searchbox" />
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="">Gym</label>
+                            <ais-menu-select attribute="gym_name" />
                         </div>
                     </div>
                     <div class="col-sm-3">
