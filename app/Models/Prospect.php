@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Jobs\SendProspectSMS;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -42,6 +43,19 @@ class Prospect extends Model
             $query->whereDate('date', $carbonDate->format('Y-m-d') );
         })->when($filters['gym'] ?? null, function ($query, $gym) {
             $query->where('prospect_gym', $gym);
+        });
+    }
+
+    public function text_logs()
+    {
+        return $this->morphMany(TextLog::class, 'entity');
+    }
+
+    protected static function booted()
+    {
+        static::created(function ($prospect) {
+            // send prospec sms when created
+            SendProspectSMS::dispatch($prospect);
         });
     }
 }
